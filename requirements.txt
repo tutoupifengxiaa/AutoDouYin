@@ -1,0 +1,8 @@
+pytest
+numpy
+opencv-python
+mss
+pygetwindow
+pyautogui
+paddleocr
+Pillow

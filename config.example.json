@@ -1,0 +1,27 @@
+{
+  "cs2_window_title": "Counter-Strike 2",
+  "browser_window_title": "Chrome",
+  "ocr_roi": {
+    "x": 430,
+    "y": 940,
+    "width": 420,
+    "height": 84
+  },
+  "ocr_reference_width": 1280,
+  "ocr_reference_height": 1024,
+  "ocr_lang": "ch",
+  "ocr_keywords": [
+    "下一名玩家",
+    "切换"
+  ],
+  "poll_interval_ms": 300,
+  "ocr_scale": 2.0,
+  "threshold_value": 180,
+  "death_confirm_frames": 2,
+  "alive_confirm_frames": 2,
+  "action_cooldown_ms": 1000,
+  "focus_settle_ms": 250,
+  "scroll_mode": "page_down",
+  "scroll_amount": -600,
+  "log_level": "INFO"
+}
