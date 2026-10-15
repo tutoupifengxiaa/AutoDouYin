@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from pathlib import Path
 import re
 from typing import Any, Protocol
 
@@ -44,7 +45,15 @@ class PaddleOcrDetector:
         )
 
 
-def create_paddle_ocr_engine(lang: str = "en") -> OcrEngine:
+def create_paddle_ocr_engine(lang: str = "en", model_dir: str | Path | None = None) -> OcrEngine:
     from paddleocr import PaddleOCR
 
-    return PaddleOCR(use_angle_cls=False, lang=lang)
+    options = {"use_angle_cls": False, "lang": lang, "use_gpu": False, "show_log": False}
+    if model_dir is not None and lang == "ch":
+        root = Path(model_dir)
+        options.update(
+            det_model_dir=str(root / "det"),
+            rec_model_dir=str(root / "rec"),
+            cls_model_dir=str(root / "cls"),
+        )
+    return PaddleOCR(**options)

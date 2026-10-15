@@ -1,0 +1,14 @@
+# Validated CPU runtime for the portable Windows release (Python 3.12 x64).
+numpy==1.26.4
+paddlepaddle==2.6.2
+paddleocr==2.10.0
+opencv-python==4.10.0.84
+opencv-contrib-python==4.10.0.84
+opencv-python-headless==4.10.0.84
+albumentations==1.4.10
+albucore==0.0.13
+Pillow==11.3.0
+mss==10.1.0
+pygetwindow==0.0.9
+pyautogui==0.9.54
+setuptools==75.8.2

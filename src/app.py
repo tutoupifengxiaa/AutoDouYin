@@ -63,10 +63,13 @@ class AppLoop:
 
 
 class LiveDetector:
-    def __init__(self, config) -> None:
+    def __init__(self, config, model_dir=None) -> None:
         self._config = config
+        options = {"lang": config.ocr_lang}
+        if model_dir is not None:
+            options["model_dir"] = model_dir
         self._detector = PaddleOcrDetector(
-            create_paddle_ocr_engine(lang=config.ocr_lang),
+            create_paddle_ocr_engine(**options),
             config.ocr_keywords,
         )
 
@@ -91,14 +94,14 @@ class LiveDetector:
         return self._detector.detect(processed)
 
 
-def build_live_app(config_path: str = "config.json") -> AppLoop:
+def build_live_app(config_path: str = "config.json", model_dir=None) -> AppLoop:
     config = load_config(config_path)
     logging.basicConfig(
         level=getattr(logging, config.log_level.upper(), logging.INFO)
     )
     return AppLoop(
         config=config,
-        detector=LiveDetector(config),
+        detector=LiveDetector(config, model_dir=model_dir),
         browser_controller=BrowserController(),
         action_executor=ActionExecutor(),
     )
